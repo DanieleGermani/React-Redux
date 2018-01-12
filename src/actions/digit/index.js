@@ -5,4 +5,4 @@ export const digitClick = digit => ({
   type: DIGIT_CLICK_ACTION,
   payload: {[CLIKED_DIGIT_KEY]: digit}
 
-})
+});
