@@ -5,11 +5,11 @@ export const Operators = ({
   operators = ["+", "-", "*", "/"],
   calculateSign = "=",
   className = "buttons--operators",
-  operatorClickHander, calculateExpression
+  operatorClickHandler, calculateExpression
 }) => (
     <section className={className}>
         {operators.map((op, i) => (
-            <Button key={i} text={op} clickHandler={operatorClickHander}/>)
+            <Button key={i} text={op} clickHandler={operatorClickHandler}/>)
         )}
         <Button text={calculateSign} clickHandler={calculateExpression}/>
     </section>

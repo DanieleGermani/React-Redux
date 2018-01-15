@@ -1,12 +1,11 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import OperatorsView from '../../components/Operators';
-import {updateExpression} from '../../actions/expressions';
+import { updateExpression } from '../../actions/expressions';
 
-
-export const operatorClickHander = (type) => (dispatch,getState) =>
+export const operatorClickHandler = (type) => (dispatch, getState) =>
   dispatch(updateExpression(`${getState().curExpression} ${type} `));
 
-export const calculateExpression = (dispatch,getState) => {
+export const calculateExpression = (dispatch, getState) => {
     /* eslint-disable */
     // This rule is important in production apps!
     // Read more: https://eslint.org/docs/rules/no-eval
@@ -20,9 +19,9 @@ export const calculateExpression = (dispatch,getState) => {
     }
 };
 
-export const mapDispatchProps = dispatch =>({
-  operatorClickHander: operator => dispatch(operatorClickHander(operator)),
+export const mapDispatchToProps = dispatch => ({
+  operatorClickHandler: operator => dispatch(operatorClickHandler(operator)),
   calculateExpression: () => dispatch(calculateExpression)
 });
 
-export default connect(null, mapDispatchProps)(OperatorsView);
+export default connect(null, mapDispatchToProps)(OperatorsView);

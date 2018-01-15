@@ -1,16 +1,15 @@
 import { connect } from 'react-redux';
 import HistoryView from '../../components/History';
-import {toggleHistory} from '../../actions/history';
-import {updateExpression} from '../../actions/expressions';
+import { toggleHistory } from '../../actions/history';
+import { updateExpression } from '../../actions/expressions';
 
-
-export const historyItemClickHandler = dispatch => history =>{
+export const historyItemClickHandler = dispatch => history => {
   dispatch(updateExpression(history));
   dispatch(toggleHistory());
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  historyItemClickHandler : historyItemClickHandler(dispatch),
+  historyItemClickHandler: historyItemClickHandler(dispatch),
   toggleHistory: () => dispatch(toggleHistory())
 });
 
