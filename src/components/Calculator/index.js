@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
 import '../../Calculator.css';
 import Display from '../Display';
-import ControlPanel from '../ControlPanel';
-import Digits from '../../container/Digits';
-import Operators from '../Operators';
-import History from '../History';
-import store from '../../store';
+import ControlPanel from '../../containers/ControlPanel';
+import Digits from '../../containers/Digits';
+import Operators from '../../containers/Operators';
+import History from '../../containers/History';
+import PropTypes from 'prop-types';
 
 class Calculator extends Component {
   render() {
       return (
-          <main className="react-calculator">
-              <Display text={store.getState().curExpression} />
+          <main className={this.props.className ? this.props.className : "react-calculator"}>
+              <Display text={this.context.store.getState().curExpression} />
               <ControlPanel />
-              <Digits store={store} />
+              <Digits />
               <Operators />
-              <History showHistory={store.getState().showHistory}
-                        history={store.getState().history}/>
+              <History showHistory={this.context.store.getState().showHistory}
+                       history={this.context.store.getState().history} />
           </main>
       )
   }
 }
+
+Calculator.contextTypes = {
+  store: PropTypes.object.isRequired
+};
 
 export default Calculator;
